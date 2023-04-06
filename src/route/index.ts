@@ -1,4 +1,4 @@
-import {LoginPage} from "../page/LoginPage";
+import {LoginPage} from "../page/LoginPage/LoginPage";
 import {HotelsPage} from "../page/HotelsPage";
 import React from "react";
 
