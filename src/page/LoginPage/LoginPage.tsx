@@ -1,15 +1,34 @@
 import React from 'react'
-
 import styles from "./LoginPage.module.scss"
 import {useForm} from "react-hook-form";
+import {useAppDispatch} from "../../app/hooks";
+import {loginAsync} from "../../features/auth/authSlice";
+import {useNavigate} from "react-router-dom";
+import {RouteNames} from "../../route";
+
+type FormValues = {
+  email: string;
+  password: string;
+};
 
 export function LoginPage() {
-  const {register, handleSubmit, formState: {errors}, reset} = useForm();
+  const {register, setError, handleSubmit, formState: {errors}} = useForm<FormValues>();
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
-  const onSubmit = () => {
-    //
-    reset();
-  };
+  const onSubmit = async (data: { email: string, password: string }) => {
+    dispatch(loginAsync(data))
+      .unwrap()
+      .then(() => {
+        navigate(RouteNames.HOTELS)
+      })
+      .catch((e) => {
+        setError("password", {
+          type: "custom",
+          message: e.message
+        })
+      })
+  }
 
   return (
     <div className={styles.container}>
@@ -46,7 +65,7 @@ export function LoginPage() {
           />
           {errors.password && <span role="alert">{errors.password.message as string}</span>}
         </div>
-        <button className={styles.button}>Войти</button>
+        <button type="submit" className={styles.button}>Войти</button>
       </form>
     </div>
   )
