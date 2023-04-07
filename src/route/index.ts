@@ -1,5 +1,5 @@
 import {LoginPage} from "../page/LoginPage/LoginPage";
-import {HotelsPage} from "../page/HotelsPage";
+import {HotelsPage} from "../page/HotelsPage/HotelsPage";
 import React from "react";
 
 export interface IRoute {

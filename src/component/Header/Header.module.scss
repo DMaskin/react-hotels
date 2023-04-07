@@ -1,0 +1,50 @@
+.container {
+  height: 92px;
+  width: 100%;
+  background-color: #F4F4F4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .brandContainer {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin: 0 0 0 32px;
+
+    h1 {
+      font-size: 24px;
+      font-weight: bold;
+      color: #424242;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    margin: 0 35px 0 0;
+    width: 83px;
+    height: 24px;
+
+    button {
+      outline: none;
+      height: 20px;
+      font-weight: 400;
+      font-size: 16px;
+      color: #41522E;
+      background-color: #F4F4F4;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        margin-left: 15px;
+      }
+    }
+  }
+}
