@@ -1,5 +1,5 @@
 import {IUser} from "../../model";
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {login, logout} from "./authAPI";
 
 export interface AuthState {
@@ -32,7 +32,14 @@ export const logoutAsync = createAsyncThunk(
 export const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setAuth: (state, action: PayloadAction<boolean>) => {
+      state.isAuth = action.payload
+    },
+    setUser: (state, action: PayloadAction<IUser>) => {
+      state.user = action.payload
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginAsync.pending, (state) => {

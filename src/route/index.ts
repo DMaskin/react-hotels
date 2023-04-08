@@ -13,7 +13,7 @@ export enum RouteNames {
 }
 
 export const authorizedRoutes: IRoute[] = [
-  {path: RouteNames.LOGIN, component: LoginPage},
+
   {path: RouteNames.HOTELS, component: HotelsPage},
 ]
 
