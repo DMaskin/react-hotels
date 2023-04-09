@@ -1,5 +1,5 @@
 import React, {ForwardedRef, forwardRef, useState} from 'react'
-import styles from "./SearchCard.module.scss"
+import styles from "./Search.module.scss"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import {useForm} from "react-hook-form";
@@ -10,7 +10,7 @@ type FormValues = {
   days: number
 };
 
-export function SearchCard() {
+export function Search() {
   const [startDate, setStartDate] = useState<Date | null>(new Date());
   const {register, handleSubmit} = useForm<FormValues>();
 

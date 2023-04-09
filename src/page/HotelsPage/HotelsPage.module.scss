@@ -1,10 +1,17 @@
 .pageContainer {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  gap: 24px;
+  height: calc(100vh - 96px);
+
   background-color: #F4F4F4;
 
   .cardsContainer {
     display: flex;
     align-items: center;
     justify-content: center;
-
+    flex-direction: column;
+    gap: 24px
   }
 }

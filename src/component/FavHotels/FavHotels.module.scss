@@ -1,0 +1,59 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+  width: 360px;
+  height: 472px;
+  background: #FFFFFF;
+  box-shadow: 0 4px 33px rgba(0, 0, 0, 0.04);
+  border-radius: 16px;
+
+  .title {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    margin-left: 32px;
+
+    h2 {
+      padding: 0;
+      font-weight: 500;
+      font-size: 24px;
+    }
+  }
+
+
+  .buttonBlock {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-left: 32px;
+    gap: 8px;
+
+    button {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 4px;
+
+      width: 89px;
+      height: 28px;
+      outline: none;
+      background: #FFFFFF;
+      border: 1px solid #41522E;
+      border-radius: 4px;
+    }
+  }
+
+  .hotelsBlock {
+    margin-left: 32px;
+  }
+
+  .separator {
+    width: 296px;
+    height: 1px;
+    background: rgba(135, 135, 135, 0.2);
+    margin: 15px 0;
+  }
+}
