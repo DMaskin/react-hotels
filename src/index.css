@@ -2,3 +2,29 @@ body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
 }
+
+:root {
+  --scrollbarBgColor: #E7E7E7;
+  --scrollbarThumbColor: #41522E;
+  --scrollbarWidth: 2px;
+  --scrollbarBorder: 0 solid var(--scrollbarBgColor);
+  --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4);
+}
+.scrollable {
+  scrollbar-width: var(--scrollbarWidth);
+  scrollbar-color: var(--scrollbarThumbColor) var(--scrollbarBgColor);
+}
+.scrollable::-webkit-scrollbar {
+  width: var(--scrollbarWidth);
+}
+.scrollable::-webkit-scrollbar-track {
+  background: var(--scrollbarBgColor);
+  border-radius: var(--scrollbarBorderRadius);
+}
+.scrollable::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbarThumbColor);
+  border-radius: var(--scrollbarBorderRadius);
+  border: var(--scrollbarBorder);
+}
+
+

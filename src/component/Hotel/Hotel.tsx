@@ -1,11 +1,11 @@
 import React from 'react'
-import styles from "./SmallHotel.module.scss"
+import styles from "./Hotel.module.scss"
 import goldStar from "../../asset/goldStar.svg"
 import grayStar from "../../asset/grayStar.svg"
 import heart from "../../asset/heart.svg"
 
 
-export function SmallHotel() {
+export function Hotel() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>

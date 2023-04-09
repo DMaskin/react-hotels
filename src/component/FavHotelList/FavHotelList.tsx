@@ -1,8 +1,8 @@
 import React from 'react'
-import styles from "./FavHotels.module.scss"
-import {SmallHotel} from "../SmallHotel/SmallHotel";
+import styles from "./FavHotelList.module.scss"
+import {Hotel} from "../Hotel/Hotel";
 
-export function FavHotels() {
+export function FavHotelList() {
 
   return (
     <div className={styles.container}>
@@ -25,12 +25,23 @@ export function FavHotels() {
           </svg>
         </button>
       </div>
-      <div className={styles.hotelsBlock}>
-        <SmallHotel/>
-        <div className={styles.separator}/>
-        <SmallHotel/>
-        <div className={styles.separator}/>
-        <SmallHotel/>
+      <div className={`${styles.hotelsList} scrollable`}>
+        <div className={styles.hotel}>
+          <Hotel/>
+          <div className={styles.separator}/>
+        </div>
+        <div className={styles.hotel}>
+          <Hotel/>
+          <div className={styles.separator}/>
+        </div>
+        <div className={styles.hotel}>
+          <Hotel/>
+          <div className={styles.separator}/>
+        </div>
+        <div className={styles.hotel}>
+          <Hotel/>
+          <div className={styles.separator}/>
+        </div>
       </div>
     </div>
   )
