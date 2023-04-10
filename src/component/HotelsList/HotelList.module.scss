@@ -14,11 +14,18 @@
     justify-content: space-between;
     margin: 48px 32px 0 32px;
 
-    h1 {
-      font-weight: bold;
-      font-size: 32px;
-      color: #424242;
-      margin: 0;
+    .location {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+
+      h1 {
+        font-weight: bold;
+        font-size: 32px;
+        color: #424242;
+        margin: 0;
+      }
     }
 
     p {
@@ -27,13 +34,6 @@
       color: #41522E;
       margin: 0;
     }
-  }
-
-  .slider {
-    width: calc(100% - 64px);
-    height: 149px;
-    background-color: aqua;
-    margin: 0 32px 0 32px;
   }
 
   p {
@@ -63,13 +63,13 @@
         background: rgba(65, 82, 46, 0.05);
         border-radius: 50%;
       }
+    }
 
-      .separator {
-        width: calc(100% - 32px);
-        height: 1px;
-        background: rgba(135, 135, 135, 0.2);
-        margin: 15px 32px 15px 0;
-      }
+    .separator {
+      width: calc(100% - 32px);
+      height: 1px;
+      background: rgba(135, 135, 135, 0.2);
+      margin: 15px 32px 15px 0;
     }
   }
 }

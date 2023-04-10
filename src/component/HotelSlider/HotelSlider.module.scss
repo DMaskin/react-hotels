@@ -1,0 +1,17 @@
+.container {
+  height: 149px;
+  margin: 0 32px 0 32px;
+
+  .sliderItem {
+    margin-right: 12px;
+    outline: none;
+
+    img {
+      width: 164px;
+      height: 149px;
+      border-radius: 10px;
+      box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+    }
+  }
+}
+
