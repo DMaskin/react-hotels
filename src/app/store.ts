@@ -1,12 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import createSagaMiddleware from "redux-saga"
 import authReducer from "../features/auth/authSlice"
+import hotelsReducer from "../features/hotel/hotelSlice"
+
+const saga = createSagaMiddleware()
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
-    auth: authReducer
+    auth: authReducer,
+    hotels: hotelsReducer,
   },
+  // middleware: [saga]
 });
 
 export type AppDispatch = typeof store.dispatch;

@@ -17,3 +17,9 @@ export function logout() {
     }, 500)
   })
 }
+
+export function authCheck() {
+  const isAuth = !!localStorage.getItem("auth")
+  const email = localStorage.getItem("email")
+  return {isAuth, email};
+}

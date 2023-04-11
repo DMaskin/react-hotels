@@ -22,7 +22,7 @@ export function LoginPage() {
       .then(() => {
         navigate(RouteNames.HOTELS)
       })
-      .catch((e) => {
+      .catch((e: Error) => {
         setError("password", {
           type: "custom",
           message: e.message

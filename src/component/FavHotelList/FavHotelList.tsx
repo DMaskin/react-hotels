@@ -1,8 +1,11 @@
 import React from 'react'
 import styles from "./FavHotelList.module.scss"
 import {Hotel} from "../Hotel/Hotel";
+import {useAppDispatch, useAppSelector} from "../../app/hooks";
 
 export function FavHotelList() {
+  const dispatch = useAppDispatch()
+  const {hotels} = useAppSelector(state => state.hotels)
 
   return (
     <div className={styles.container}>
@@ -13,35 +16,50 @@ export function FavHotelList() {
         <button>
           Рейтинг
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 7.24264L12.4393 8.3033L9.25736 5.12132L6.07538 8.3033L5.01472 7.24264L9.25736 3L13.5 7.24264Z" fill="#41522E"/>
-            <path d="M13.5 10.8324L12.4393 9.77179L9.25736 12.9538L6.07538 9.77179L5.01472 10.8324L9.25736 15.0751L13.5 10.8324Z" fill="#41522E" fillOpacity="0.3"/>
+            <path
+              d="M13.5 7.24264L12.4393 8.3033L9.25736 5.12132L6.07538 8.3033L5.01472 7.24264L9.25736 3L13.5 7.24264Z"
+              fill="#41522E"/>
+            <path
+              d="M13.5 10.8324L12.4393 9.77179L9.25736 12.9538L6.07538 9.77179L5.01472 10.8324L9.25736 15.0751L13.5 10.8324Z"
+              fill="#41522E" fillOpacity="0.3"/>
           </svg>
         </button>
         <button>
           Цена
           <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13.5 7.24264L12.4393 8.3033L9.25736 5.12132L6.07538 8.3033L5.01472 7.24264L9.25736 3L13.5 7.24264Z" fill="black" fillOpacity="0.32"/>
-            <path d="M13.5 10.8325L12.4393 9.77181L9.25736 12.9538L6.07538 9.77181L5.01472 10.8325L9.25736 15.0751L13.5 10.8325Z" fill="black" fillOpacity="0.32"/>
+            <path
+              d="M13.5 7.24264L12.4393 8.3033L9.25736 5.12132L6.07538 8.3033L5.01472 7.24264L9.25736 3L13.5 7.24264Z"
+              fill="black" fillOpacity="0.32"/>
+            <path
+              d="M13.5 10.8325L12.4393 9.77181L9.25736 12.9538L6.07538 9.77181L5.01472 10.8325L9.25736 15.0751L13.5 10.8325Z"
+              fill="black" fillOpacity="0.32"/>
           </svg>
         </button>
       </div>
       <div className={`${styles.hotelsList} scrollable`}>
-        <div className={styles.hotel}>
-          <Hotel/>
-          <div className={styles.separator}/>
-        </div>
-        <div className={styles.hotel}>
-          <Hotel/>
-          <div className={styles.separator}/>
-        </div>
-        <div className={styles.hotel}>
-          <Hotel/>
-          <div className={styles.separator}/>
-        </div>
-        <div className={styles.hotel}>
-          <Hotel/>
-          <div className={styles.separator}/>
-        </div>
+        {hotels.map((h) =>
+          <div key={h.hotelId} className={styles.hotel}>
+            <Hotel hotel={h}/>
+            <div className={styles.separator}/>
+          </div>
+        )}
+
+        {/*<div className={styles.hotel}>*/}
+        {/*  <Hotel/>*/}
+        {/*  <div className={styles.separator}/>*/}
+        {/*</div>*/}
+        {/*<div className={styles.hotel}>*/}
+        {/*  <Hotel/>*/}
+        {/*  <div className={styles.separator}/>*/}
+        {/*</div>*/}
+        {/*<div className={styles.hotel}>*/}
+        {/*  <Hotel/>*/}
+        {/*  <div className={styles.separator}/>*/}
+        {/*</div>*/}
+        {/*<div className={styles.hotel}>*/}
+        {/*  <Hotel/>*/}
+        {/*  <div className={styles.separator}/>*/}
+        {/*</div>*/}
       </div>
     </div>
   )

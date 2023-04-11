@@ -16,6 +16,9 @@ const initialState: AuthState = {
   isLoading: false
 }
 
+// type ReturnedType = any // The type of the return of the thunk
+// type ThunkArg = { email: string, password: string }
+
 export const loginAsync = createAsyncThunk(
   "auth/login",
   async (credentials: { email: string, password: string }) => {

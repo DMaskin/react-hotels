@@ -3,19 +3,36 @@ import styles from "./Search.module.scss"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css";
 import {useForm} from "react-hook-form";
+import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {fetchHotels} from "../../features/hotel/hotelAPI";
+import {hotelSlice} from "../../features/hotel/hotelSlice";
 
 type FormValues = {
-  location: string;
-  date: Date;
-  days: number
+  formLocation: string;
+  formDays: number
 };
 
 export function Search() {
-  const [startDate, setStartDate] = useState<Date | null>(new Date());
-  const {register, handleSubmit} = useForm<FormValues>();
+  const {location, checkIn, daysCount} = useAppSelector(state => state.hotels)
+  const [startDate, setStartDate] = useState(checkIn)
+  const dispatch = useAppDispatch()
+  const {setHotels} = hotelSlice.actions
+  const {register, handleSubmit} = useForm<FormValues>({
+    defaultValues: {
+      formDays: daysCount,
+      formLocation: location
+    }});
 
-  const onSubmit = async () => {
+  const onSubmit = async (data: FormValues) => {
+    // const newDate = (daysCount <= 31)
+    //   ? new Date(checkIn.setDate(checkIn.getDate() + daysCount))
+    //   : new Date(checkIn.setMonth(checkIn.getMonth() + daysCount / 30))
 
+    console.log(data.formDays)
+    let newDate = new Date(startDate.setDate(startDate.getDate() + data.formDays))
+    console.log(newDate)
+    fetchHotels(data.formLocation, startDate, newDate)
+      .then((hotels) => dispatch(setHotels(hotels)))
   }
 
   const ExampleCustomInput =
@@ -44,7 +61,7 @@ export function Search() {
           <label htmlFor="location">Локация</label>
           <input
             id="location"
-            {...register("location", {
+            {...register("formLocation", {
               required: "required",
             })}
             type="text"
@@ -63,7 +80,7 @@ export function Search() {
           <label htmlFor="days">Количество дней</label>
           <input
             id="days"
-            {...register("days", {
+            {...register("formDays", {
               required: "required",
             })}
             type="number"
