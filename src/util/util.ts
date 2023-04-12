@@ -3,8 +3,8 @@ export function getDate(date: Date) {
   return str.substring(0, str.length - 2)
 }
 
-// function addDays(date: Date, days: number) {
-//   let result = new Date(date);
-//   result.setDate(result.getDate() + days);
-//   return result;
-// }
+export function addDays(date: Date, days: number) {
+  const newDate = new Date(date)
+  newDate.setMilliseconds(date.getMilliseconds() + days * 24 * 3600 * 1000)
+  return newDate
+}

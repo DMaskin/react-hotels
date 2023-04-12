@@ -1,11 +1,10 @@
 import React from 'react'
 import styles from "./FavHotelList.module.scss"
 import {Hotel} from "../Hotel/Hotel";
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
+import {useAppSelector} from "../../app/hooks";
 
 export function FavHotelList() {
-  const dispatch = useAppDispatch()
-  const {hotels} = useAppSelector(state => state.hotels)
+  const {favHotels} = useAppSelector(state => state.hotels)
 
   return (
     <div className={styles.container}>
@@ -37,7 +36,7 @@ export function FavHotelList() {
         </button>
       </div>
       <div className={`${styles.hotelsList} scrollable`}>
-        {hotels.map((h) =>
+        {favHotels.map((h) =>
           <div key={h.hotelId} className={styles.hotel}>
             <Hotel hotel={h}/>
             <div className={styles.separator}/>

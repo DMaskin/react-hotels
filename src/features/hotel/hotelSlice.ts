@@ -7,7 +7,7 @@ export interface HotelState {
   hotels: IHotel[],
   favHotels: IHotel[],
   location: string,
-  daysCount: number,
+  days: number,
   checkIn: Date
 }
 
@@ -17,7 +17,7 @@ const initialState: HotelState = {
   hotels: [] as IHotel[],
   favHotels: [] as IHotel[],
   location: "Москва",
-  daysCount: 1,
+  days: 1,
   checkIn: new Date()
 }
 
@@ -38,6 +38,28 @@ export const hotelSlice = createSlice({
         }
       })
     },
+    setDaysCount: (state, action: PayloadAction<number>) => {
+      state.days = action.payload
+    },
+    setCheckIn: (state, action:  PayloadAction<Date>) => {
+      state.checkIn = action.payload
+    },
+    setLocation: (state, action: PayloadAction<string>) => {
+      state.location = action.payload
+    },
+    addToFav: (state, action: PayloadAction<IHotel>) => {
+      const index = state.hotels.findIndex((h) => h.hotelId === action.payload.hotelId)
+      const favHotel = {...state.hotels[index], isFav: true}
+      state.hotels.splice(index, 1, favHotel)
+      state.favHotels.splice(state.favHotels.length, 0, favHotel)
+    },
+    removeFromFav: (state, action: PayloadAction<number>) => {
+      const favIndex = state.favHotels.findIndex((h) => h.hotelId === action.payload)
+      state.favHotels.splice(favIndex, 1)
+      const index = state.hotels.findIndex((h) => h.hotelId === action.payload)
+      const notFav = {...state.hotels[index], isFav: false}
+      state.hotels.splice(index, 1, notFav)
+    }
   }
 })
 
