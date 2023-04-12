@@ -2,7 +2,6 @@ import React from 'react'
 import styles from "./Hotel.module.scss"
 import {IHotel} from "../../model";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {getDate} from "../../util/util";
 import goldStar from "../../asset/goldStar.svg"
 import grayStar from "../../asset/grayStar.svg"
 import heart from "../../asset/heart.svg"
@@ -34,7 +33,7 @@ export function Hotel({hotel}: { hotel: IHotel }) {
       </div>
       <div className={styles.date}>
         <p>
-          {getDate(checkIn)} — {days} дней
+          {checkIn.substring(0, checkIn.length - 5)} — {days} дней
         </p>
       </div>
       <div className={styles.ratingAndPrice}>

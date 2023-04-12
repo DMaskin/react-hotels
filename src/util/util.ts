@@ -1,6 +1,6 @@
-export function getDate(date: Date) {
+export function dateToString(date: Date, cutCount: number) {
   let str = (new Intl.DateTimeFormat("ru", {dateStyle: "long"}).format(date))
-  return str.substring(0, str.length - 2)
+  return str.substring(0, str.length - cutCount)
 }
 
 export function addDays(date: Date, days: number) {

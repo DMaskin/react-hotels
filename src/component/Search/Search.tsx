@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker"
 import {useAppDispatch} from "../../app/hooks";
 import {fetchHotels} from "../../features/hotel/hotelAPI";
 import {hotelSlice} from "../../features/hotel/hotelSlice";
-import {addDays} from "../../util/util";
+import {addDays, dateToString} from "../../util/util";
 import "react-datepicker/dist/react-datepicker.css";
 import calendarIcon from "../../asset/calendar.svg"
 import styles from "./Search.module.scss"
@@ -22,7 +22,7 @@ export function Search() {
     fetchHotels(loc, date, newDate)
       .then((hotels) => {
         dispatch(setHotels(hotels))
-        dispatch(setCheckIn(date))
+        dispatch(setCheckIn(dateToString(date, 2)))
         dispatch(setDaysCount(days))
         dispatch(setLocation(loc))
       })

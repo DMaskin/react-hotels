@@ -8,7 +8,6 @@ import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchHotels} from "../../features/hotel/hotelAPI";
 import {hotelSlice} from "../../features/hotel/hotelSlice";
 import {IHotel} from "../../model";
-import {getDate} from "../../util/util";
 
 export function HotelList() {
   const {location, checkIn, favHotels, hotels} = useAppSelector(state => state.hotels)
@@ -29,7 +28,7 @@ export function HotelList() {
           <img src={arrow} alt=""/>
           <h1>{location}</h1>
         </div>
-        <p>{getDate(checkIn)}</p>
+        <p>{checkIn}</p>
       </div>
       <HotelSlider/>
       <p>Добавлено в Избранное: <strong>{favHotels.length}</strong> отелей</p>

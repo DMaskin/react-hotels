@@ -1,5 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {IHotel} from "../../model";
+import {dateToString} from "../../util/util";
 
 export interface HotelState {
   error: string,
@@ -8,7 +9,7 @@ export interface HotelState {
   favHotels: IHotel[],
   location: string,
   days: number,
-  checkIn: Date
+  checkIn: string
 }
 
 const initialState: HotelState = {
@@ -18,7 +19,7 @@ const initialState: HotelState = {
   favHotels: [] as IHotel[],
   location: "Москва",
   days: 1,
-  checkIn: new Date()
+  checkIn: dateToString(new Date(), 2)
 }
 
 export const hotelSlice = createSlice({
@@ -41,7 +42,7 @@ export const hotelSlice = createSlice({
     setDaysCount: (state, action: PayloadAction<number>) => {
       state.days = action.payload
     },
-    setCheckIn: (state, action:  PayloadAction<Date>) => {
+    setCheckIn: (state, action:  PayloadAction<string>) => {
       state.checkIn = action.payload
     },
     setLocation: (state, action: PayloadAction<string>) => {
