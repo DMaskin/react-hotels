@@ -2,9 +2,8 @@ import React from 'react'
 import styles from "./LoginPage.module.scss"
 import {useForm} from "react-hook-form";
 import {useAppDispatch} from "../../app/hooks";
-import {loginAsync} from "../../features/auth/authSlice";
+import { loginRoutine} from "../../features/auth/authSlice";
 import {useNavigate} from "react-router-dom";
-import {RouteNames} from "../../route";
 
 type FormValues = {
   email: string;
@@ -12,22 +11,12 @@ type FormValues = {
 };
 
 export function LoginPage() {
-  const {register, setError, handleSubmit, formState: {errors}} = useForm<FormValues>();
+  const {register, handleSubmit, formState: {errors}} = useForm<FormValues>();
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const onSubmit = async (data: { email: string, password: string }) => {
-    dispatch(loginAsync(data))
-      .unwrap()
-      .then(() => {
-        navigate(RouteNames.HOTELS)
-      })
-      .catch((e: Error) => {
-        setError("password", {
-          type: "custom",
-          message: e.message
-        })
-      })
+    dispatch(loginRoutine({data, navigate}))
   }
 
   return (

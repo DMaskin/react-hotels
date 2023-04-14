@@ -1,9 +1,10 @@
-export function login(email: string, password: string) {
+export function login(credentials : {email: string, password: string}) {
   return new Promise<{ email: string, password: string }>((resolve) => {
     setTimeout(() => {
-        localStorage.setItem("auth", "true");
-        localStorage.setItem("email", email);
-        resolve({email, password})
+      const {email, password} = credentials
+      localStorage.setItem("auth", "true");
+      localStorage.setItem("email", email);
+      resolve({email, password})
     }, 500)
   })
 }

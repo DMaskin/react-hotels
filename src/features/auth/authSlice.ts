@@ -1,6 +1,7 @@
 import {IUser} from "../../model";
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {login, logout} from "./authAPI";
+import { createRoutine } from 'redux-saga-routines'
 
 export interface AuthState {
   isAuth: boolean,
@@ -16,14 +17,10 @@ const initialState: AuthState = {
   isLoading: false
 }
 
-// type ReturnedType = any // The type of the return of the thunk
-// type ThunkArg = { email: string, password: string }
-
 export const loginAsync = createAsyncThunk(
   "auth/login",
   async (credentials: { email: string, password: string }) => {
-    const {email, password} = credentials
-    return await login(email, password)
+    return await login(credentials)
   }
 )
 
@@ -31,6 +28,9 @@ export const logoutAsync = createAsyncThunk(
   "auth/logout",
   async () => await logout()
 )
+
+export const loginRoutine = createRoutine("login")
+export const logoutRoutine = createRoutine("logout")
 
 export const authSlice = createSlice({
   name: "auth",
@@ -41,32 +41,19 @@ export const authSlice = createSlice({
     },
     setUser: (state, action: PayloadAction<IUser>) => {
       state.user = action.payload
-    }
+    },
   },
-  extraReducers: (builder) => {
-    builder
-      .addCase(loginAsync.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(loginAsync.fulfilled, (state, action) => {
-        state.user = action.payload
-        state.isAuth = true
-        state.isLoading = false
-      })
-      .addCase(loginAsync.rejected, (state) => {
-        state.isLoading = false
-      })
-      .addCase(logoutAsync.pending, (state) => {
-        state.isLoading = true
-      })
-      .addCase(logoutAsync.fulfilled, (state) => {
-        state.user = {} as IUser
-        state.isAuth = false
-        state.isLoading = false
-      })
-      .addCase(logoutAsync.rejected, (state) => {
-        state.isLoading = false
-      })
+  extraReducers: {
+    [loginRoutine.SUCCESS]: (state, action: PayloadAction<{email: string, password: string}>) => {
+      authSlice.caseReducers.setUser(state, action)
+      authSlice.caseReducers.setAuth(state, {...action, payload: true})
+    },
+    [logoutRoutine.SUCCESS]: (state, action) => {
+      authSlice.caseReducers.setUser(state, {...action, payload: {} as IUser})
+      authSlice.caseReducers.setAuth(state, {...action, payload: false})
+    },
+    [loginRoutine.FULFILL]: () => {},
+    [logoutRoutine.FULFILL]: () => {},
   }
 })
 

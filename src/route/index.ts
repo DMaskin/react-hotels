@@ -9,14 +9,13 @@ export interface IRoute {
 
 export enum RouteNames {
   HOTELS = "/hotels",
-  LOGIN = "/login"
+  LOGIN = "/login",
 }
 
 export const authorizedRoutes: IRoute[] = [
-
   {path: RouteNames.HOTELS, component: HotelsPage},
 ]
 
 export const publicRoutes: IRoute[] = [
-  {path: RouteNames.LOGIN, component: LoginPage}
+  {path: RouteNames.LOGIN, component: LoginPage},
 ]

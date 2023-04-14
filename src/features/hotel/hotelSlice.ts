@@ -1,4 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+
 import {IHotel} from "../../model";
 import {dateToString} from "../../util/util";
 
