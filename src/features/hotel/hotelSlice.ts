@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-
 import {IHotel} from "../../model";
 import {dateToString} from "../../util/util";
+import {createRoutine} from "redux-saga-routines";
 
 export interface HotelState {
   error: string,
@@ -23,6 +23,15 @@ const initialState: HotelState = {
   checkIn: dateToString(new Date(), 2)
 }
 
+export const fetchHotelsRoutine = createRoutine("hotels/fetch")
+
+interface FetchHotelsPayload {
+  hotels: IHotel[],
+  location: string,
+  checkIn: string,
+  days: number
+}
+
 export const hotelSlice = createSlice({
   name: "hotels",
   initialState: initialState,
@@ -40,7 +49,7 @@ export const hotelSlice = createSlice({
         }
       })
     },
-    setDaysCount: (state, action: PayloadAction<number>) => {
+    setDays: (state, action: PayloadAction<number>) => {
       state.days = action.payload
     },
     setCheckIn: (state, action:  PayloadAction<string>) => {
@@ -62,6 +71,24 @@ export const hotelSlice = createSlice({
       const notFav = {...state.hotels[index], isFav: false}
       state.hotels.splice(index, 1, notFav)
     }
+  },
+  extraReducers: {
+    [fetchHotelsRoutine.REQUEST]: (state) => {
+      state.isLoading = true
+    },
+    [fetchHotelsRoutine.SUCCESS]: (state, action: PayloadAction<FetchHotelsPayload>) => {
+      const {hotels, location, checkIn, days} = action.payload
+      hotelSlice.caseReducers.setHotels(state, {...action, payload: hotels})
+      hotelSlice.caseReducers.setCheckIn(state, {...action, payload: checkIn})
+      hotelSlice.caseReducers.setDays(state, {...action, payload: days})
+      hotelSlice.caseReducers.setLocation(state, {...action, payload: location})
+    },
+    [fetchHotelsRoutine.FAILURE]: (state, action) => {
+      state.error = (action.payload as Error).message
+    },
+    [fetchHotelsRoutine.FULFILL]: (state) => {
+      state.isLoading = false
+    },
   }
 })
 

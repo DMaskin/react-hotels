@@ -29,8 +29,8 @@ export const logoutAsync = createAsyncThunk(
   async () => await logout()
 )
 
-export const loginRoutine = createRoutine("login")
-export const logoutRoutine = createRoutine("logout")
+export const loginRoutine = createRoutine("auth/login")
+export const logoutRoutine = createRoutine("auth/logout")
 
 export const authSlice = createSlice({
   name: "auth",

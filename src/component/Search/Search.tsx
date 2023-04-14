@@ -1,31 +1,27 @@
 import React, {FormEvent, ForwardedRef, forwardRef, useState} from 'react'
 import DatePicker from "react-datepicker"
 import {useAppDispatch} from "../../app/hooks";
-import {fetchHotels} from "../../features/hotel/hotelAPI";
-import {hotelSlice} from "../../features/hotel/hotelSlice";
-import {addDays, dateToString} from "../../util/util";
-import "react-datepicker/dist/react-datepicker.css";
+import {fetchHotelsRoutine} from "../../features/hotel/hotelSlice";
+import {addDays} from "../../util/util";
 import calendarIcon from "../../asset/calendar.svg"
 import styles from "./Search.module.scss"
+import "react-datepicker/dist/react-datepicker.css";
 
 export function Search() {
   const [date, setDate] = useState(new Date())
   const [loc, setLoc] = useState("Москва")
   const [days, setDays] = useState(1)
   const dispatch = useAppDispatch()
-  const {setHotels, setDaysCount, setCheckIn, setLocation} = hotelSlice.actions
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
     let newDate = addDays(date, days)
-
-    fetchHotels(loc, date, newDate)
-      .then((hotels) => {
-        dispatch(setHotels(hotels))
-        dispatch(setCheckIn(dateToString(date, 2)))
-        dispatch(setDaysCount(days))
-        dispatch(setLocation(loc))
-      })
+    dispatch(fetchHotelsRoutine({
+      location: loc,
+      checkIn: date,
+      checkOut: newDate,
+      days
+    }))
   }
 
   const ExampleCustomInput =
