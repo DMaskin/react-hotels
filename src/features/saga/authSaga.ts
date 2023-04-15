@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
 import {PayloadAction} from "@reduxjs/toolkit";
-import {login, logout} from "../../features/auth/authAPI";
-import {loginRoutine, logoutRoutine} from "../../features/auth/authSlice";
+import {login, logout} from "../auth/authAPI";
+import {loginRoutine, logoutRoutine} from "../auth/authSlice";
 import {NavigateFunction} from "react-router-dom";
 import {RouteNames} from "../../route";
 

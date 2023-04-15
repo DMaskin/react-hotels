@@ -5,19 +5,24 @@ import {Hotel} from "../Hotel/Hotel";
 import arrow from "../../asset/arrow.svg"
 import {HotelSlider} from "../HotelSlider/HotelSlider";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {fetchHotels} from "../../features/hotel/hotelAPI";
-import {hotelSlice} from "../../features/hotel/hotelSlice";
+import {fetchHotelsRoutine} from "../../features/hotel/hotelSlice";
 import {IHotel} from "../../model";
+import {addDays} from "../../util/util";
 
 export function HotelList() {
   const {location, checkIn, favHotels, hotels} = useAppSelector(state => state.hotels)
   const dispatch = useAppDispatch()
-  const {setHotels} = hotelSlice.actions
 
   useEffect(() => {
-    fetchHotels().then(hotels => {
-      dispatch(setHotels(hotels))
-    })
+    const location = "Москва"
+    const checkIn = new Date()
+    const checkOut = addDays(checkIn, 1)
+    const days = 1
+
+    console.log("useeffect")
+    dispatch(fetchHotelsRoutine({
+      location: location, checkIn: checkIn, checkOut: checkOut, days: days
+    }))
   }, [])
 
   return (

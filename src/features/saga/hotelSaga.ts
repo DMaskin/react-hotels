@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects'
-import {fetchHotels} from "../../features/hotel/hotelAPI";
+import {fetchHotels} from "../hotel/hotelAPI";
 import {PayloadAction} from "@reduxjs/toolkit";
-import {fetchHotelsRoutine} from "../../features/hotel/hotelSlice";
+import {fetchHotelsRoutine} from "../hotel/hotelSlice";
 import {dateToString} from "../../util/util";
 import {IHotel} from "../../model";
 
