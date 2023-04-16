@@ -2,10 +2,10 @@ import React from 'react'
 import styles from "./Hotel.module.scss"
 import {IHotel} from "../../model";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import goldStar from "../../asset/goldStar.svg"
-import grayStar from "../../asset/grayStar.svg"
-import heart from "../../asset/heart.svg"
-import greyHeart from "../../asset/greyHeart.svg"
+import goldStar from "../../asset/hotel/goldStar.svg"
+import grayStar from "../../asset/hotel/grayStar.svg"
+import heart from "../../asset/hotel/heart.svg"
+import greyHeart from "../../asset/hotel/greyHeart.svg"
 import {hotelSlice} from "../../features/hotel/hotelSlice";
 import {createLabel} from "../../util/util";
 

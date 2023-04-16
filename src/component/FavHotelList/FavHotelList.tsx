@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import styles from "./FavHotelList.module.scss"
 import {Hotel} from "../Hotel/Hotel";
+import {hotelSlice} from "../../features/hotel/hotelSlice";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import disabledArrows from "../../asset/favHotels/disabledArrows.svg"
 import ascend from "../../asset/favHotels/ascend.svg"
 import descend from "../../asset/favHotels/descend.svg"
-import {hotelSlice} from "../../features/hotel/hotelSlice";
 
 export function FavHotelList() {
   const {favHotels} = useAppSelector(state => state.hotels)

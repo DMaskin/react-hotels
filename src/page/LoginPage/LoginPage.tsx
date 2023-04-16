@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from "./LoginPage.module.scss"
 import {useForm} from "react-hook-form";
 import {useAppDispatch} from "../../app/hooks";
 import { loginRoutine} from "../../features/auth/authSlice";
 import {useNavigate} from "react-router-dom";
+import styles from "./LoginPage.module.scss"
 
 type FormValues = {
   email: string;

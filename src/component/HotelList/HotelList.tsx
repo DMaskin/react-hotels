@@ -1,13 +1,13 @@
 import React, {Fragment, useEffect} from 'react'
-import styles from "./HotelList.module.scss"
-import hotel from "../../asset/hotel.svg"
 import {Hotel} from "../Hotel/Hotel";
-import arrow from "../../asset/arrow.svg"
 import {HotelSlider} from "../HotelSlider/HotelSlider";
 import {useAppDispatch, useAppSelector} from "../../app/hooks";
 import {fetchHotelsRoutine} from "../../features/hotel/hotelSlice";
 import {IHotel} from "../../model";
 import {addDays} from "../../util/util";
+import arrow from "../../asset/hotelList/arrow.svg"
+import hotel from "../../asset/hotelList/hotel.svg"
+import styles from "./HotelList.module.scss"
 
 export function HotelList() {
   const {location, checkIn, favHotels, hotels} = useAppSelector(state => state.hotels)

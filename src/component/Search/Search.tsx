@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker"
 import {useAppDispatch} from "../../app/hooks";
 import {fetchHotelsRoutine} from "../../features/hotel/hotelSlice";
 import {addDays} from "../../util/util";
-import calendarIcon from "../../asset/calendar.svg"
+import calendarIcon from "../../asset/search/calendar.svg"
 import styles from "./Search.module.scss"
 import "react-datepicker/dist/react-datepicker.css";
 
