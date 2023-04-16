@@ -29,7 +29,7 @@ export function LoginPage() {
           <input
             id="email"
             {...register("email", {
-              required: "required",
+              required: "Обязательное поле",
               pattern: {
                 value: /\S+@\S+\.\S+/,
                 message: "Некорректный email"
@@ -44,11 +44,15 @@ export function LoginPage() {
           <input
             id="password"
             {...register("password", {
-              required: "required",
+              required: "Обязательное поле",
+              pattern: {
+                value: /^[^а-яё]+$/iu,
+                message: "Пароль не может содержать символы кириллицы"
+              },
               minLength: {
                 value: 8,
                 message: "Минимальная длина пароля должна составлять 8 символов"
-              }
+              },
             })}
             type="password"
           />
