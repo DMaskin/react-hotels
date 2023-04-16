@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {IHotel} from "../../model";
+import {IHotel, SortingProperty} from "../../model";
 import {dateToString} from "../../util/util";
 import {createRoutine} from "redux-saga-routines";
 
@@ -52,7 +52,7 @@ export const hotelSlice = createSlice({
     setDays: (state, action: PayloadAction<number>) => {
       state.days = action.payload
     },
-    setCheckIn: (state, action:  PayloadAction<string>) => {
+    setCheckIn: (state, action: PayloadAction<string>) => {
       state.checkIn = action.payload
     },
     setLocation: (state, action: PayloadAction<string>) => {
@@ -70,7 +70,14 @@ export const hotelSlice = createSlice({
       const index = state.hotels.findIndex((h) => h.hotelId === action.payload)
       const notFav = {...state.hotels[index], isFav: false}
       state.hotels.splice(index, 1, notFav)
-    }
+    },
+    sortFavHotelsByProperty: (state,
+                              action: PayloadAction<{ property: SortingProperty, isAscend: boolean }>) => {
+      const {property, isAscend} = action.payload
+      isAscend
+        ? state.favHotels = [...state.favHotels.sort((a, b) => a[property] < b[property] ? 1 : -1)]
+        : state.favHotels = [...state.favHotels.sort((a, b) => a[property] > b[property] ? 1 : -1)]
+    },
   },
   extraReducers: {
     [fetchHotelsRoutine.REQUEST]: (state) => {

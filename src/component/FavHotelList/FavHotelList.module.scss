@@ -35,13 +35,51 @@
       justify-content: space-between;
       align-items: center;
       gap: 4px;
-
+      cursor: pointer;
       width: 89px;
       height: 28px;
       outline: none;
       background: #FFFFFF;
       border: 1px solid #41522E;
       border-radius: 4px;
+    }
+
+    .radio {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .radio input[type=radio] {
+      display: none
+    }
+
+    .radio label {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      cursor: pointer;
+      width: 89px;
+      height: 28px;
+      background: #FFFFFF;
+      border-radius: 4px;
+      font-weight: 400;
+      font-size: 14px;
+      user-select: none;
+
+      color: #99A0A3;
+      border: 1px solid #E5E5E5;
+    }
+
+    /* Checked */
+    .radio input[type=radio]:checked + label {
+      border: 1px solid #41522E;
+      color: #41522E;
+    }
+
+    /* Hover */
+    .radio label:hover {
+      background-color: #f0f0f0;
     }
   }
 

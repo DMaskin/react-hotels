@@ -19,7 +19,6 @@ export function HotelList() {
     const checkOut = addDays(checkIn, 1)
     const days = 1
 
-    console.log("useeffect")
     dispatch(fetchHotelsRoutine({
       location: location, checkIn: checkIn, checkOut: checkOut, days: days
     }))

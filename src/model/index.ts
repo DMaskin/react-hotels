@@ -16,3 +16,5 @@ export interface IHotel {
   }
   isFav: boolean
 }
+
+export type SortingProperty = "stars" | "priceAvg"
