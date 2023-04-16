@@ -7,6 +7,7 @@ import grayStar from "../../asset/grayStar.svg"
 import heart from "../../asset/heart.svg"
 import greyHeart from "../../asset/greyHeart.svg"
 import {hotelSlice} from "../../features/hotel/hotelSlice";
+import {createLabel} from "../../util/util";
 
 
 export function Hotel({hotel}: { hotel: IHotel }) {
@@ -33,7 +34,7 @@ export function Hotel({hotel}: { hotel: IHotel }) {
       </div>
       <div className={styles.date}>
         <p>
-          {checkIn.substring(0, checkIn.length - 5)} — {days} дней
+          {`${checkIn.substring(0, checkIn.length - 5)} — ${days} ${createLabel(days)}`}
         </p>
       </div>
       <div className={styles.ratingAndPrice}>
