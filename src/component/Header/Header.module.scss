@@ -9,7 +9,7 @@
   .brandContainer {
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: flex-start;
     margin: 0 0 0 32px;
 
     h1 {
@@ -22,7 +22,7 @@
   .buttonContainer {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: flex-end;
     margin: 0 35px 0 0;
     width: 83px;
     height: 24px;

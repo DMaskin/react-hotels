@@ -1,10 +1,10 @@
-import {LoginPage} from "../page/LoginPage/LoginPage";
-import {HotelsPage} from "../page/HotelsPage/HotelsPage";
+import { LoginPage } from "../page/LoginPage/LoginPage";
+import { HotelsPage } from "../page/HotelsPage/HotelsPage";
 import React from "react";
 
 export interface IRoute {
-  path: string,
-  component: () => React.ReactElement,
+  path: string;
+  component: () => React.ReactElement;
 }
 
 export enum RouteNames {
@@ -13,9 +13,9 @@ export enum RouteNames {
 }
 
 export const authorizedRoutes: IRoute[] = [
-  {path: RouteNames.HOTELS, component: HotelsPage},
-]
+  { path: RouteNames.HOTELS, component: HotelsPage },
+];
 
 export const publicRoutes: IRoute[] = [
-  {path: RouteNames.LOGIN, component: LoginPage},
-]
+  { path: RouteNames.LOGIN, component: LoginPage },
+];
