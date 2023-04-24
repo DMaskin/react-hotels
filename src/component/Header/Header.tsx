@@ -1,16 +1,16 @@
-import React from "react";
-import styles from "./Header.module.scss";
-import { logoutRoutine } from "../../features/auth/authSlice";
-import { useAppDispatch } from "../../app/hooks";
-import { useNavigate } from "react-router-dom";
-import door from "../../asset/header/door.svg";
+import React from "react"
+import styles from "./Header.module.scss"
+import { logoutRoutine } from "../../features/auth/authSlice"
+import { useAppDispatch } from "../../app/hooks"
+import { useNavigate } from "react-router-dom"
+import door from "../../asset/header/door.svg"
 
 export function Header() {
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   function handleClick() {
-    dispatch(logoutRoutine({ navigate }));
+    dispatch(logoutRoutine({ navigate }))
   }
 
   return (
@@ -25,5 +25,5 @@ export function Header() {
         </button>
       </div>
     </div>
-  );
+  )
 }

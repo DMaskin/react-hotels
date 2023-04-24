@@ -1,11 +1,11 @@
-import React from "react";
-import Slider from "react-slick";
-import hotel1 from "../../asset/hotelImgs/hotel1.jpg";
-import hotel2 from "../../asset/hotelList/hotel2.jpg";
-import hotel3 from "../../asset/hotelList/hotel3.jpg";
-import hotel4 from "../../asset/hotelList/hotel4.jpg";
-import hotel5 from "../../asset/hotelList/hotel5.jpg";
-import styles from "./HotelSlider.module.scss";
+import React from "react"
+import Slider from "react-slick"
+import hotel1 from "../../asset/hotelImgs/hotel1.jpg"
+import hotel2 from "../../asset/hotelList/hotel2.jpg"
+import hotel3 from "../../asset/hotelList/hotel3.jpg"
+import hotel4 from "../../asset/hotelList/hotel4.jpg"
+import hotel5 from "../../asset/hotelList/hotel5.jpg"
+import styles from "./HotelSlider.module.scss"
 
 export function HotelSlider() {
   const settings = {
@@ -17,7 +17,7 @@ export function HotelSlider() {
     arrows: false,
     autoplay: true,
     variableWidth: true,
-  };
+  }
 
   return (
     <div className={styles.container}>
@@ -39,5 +39,5 @@ export function HotelSlider() {
         </div>
       </Slider>
     </div>
-  );
+  )
 }

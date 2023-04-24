@@ -1,32 +1,33 @@
-import React, { Fragment, useEffect } from "react";
-import { Hotel } from "../Hotel/Hotel";
-import { HotelSlider } from "../HotelSlider/HotelSlider";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import React, { Fragment, useEffect } from "react"
+import { Hotel } from "../Hotel/Hotel"
+import { HotelSlider } from "../HotelSlider/HotelSlider"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import {
   fetchHotelsRoutine,
   selectCheckIn,
   selectFavHotels,
   selectHotels,
   selectLocation,
-} from "../../features/hotel/hotelSlice";
-import { IHotel } from "../../model";
-import { addDays, createLabel } from "../../util/util";
-import arrow from "../../asset/hotelList/arrow.svg";
-import hotel from "../../asset/hotelList/hotel.svg";
-import styles from "./HotelList.module.scss";
+} from "../../features/hotel/hotelSlice"
+import { IHotel } from "../../model"
+import { addDays, createLabel } from "../../util/util"
+import arrow from "../../asset/hotelList/arrow.svg"
+import hotel from "../../asset/hotelList/hotel.svg"
+import styles from "./HotelList.module.scss"
 
 export function HotelList() {
-  const location = useAppSelector(selectLocation);
-  const checkIn = useAppSelector(selectCheckIn);
-  const favHotels = useAppSelector(selectFavHotels);
-  const hotels = useAppSelector(selectHotels);
-  const dispatch = useAppDispatch();
+  const location = useAppSelector(selectLocation)
+  const checkIn = useAppSelector(selectCheckIn)
+  const favHotels = useAppSelector(selectFavHotels)
+  const hotels = useAppSelector(selectHotels)
+  const dispatch = useAppDispatch()
 
+  // eslint-disable-next-line
   useEffect(() => {
-    const location = "Москва";
-    const checkIn = new Date();
-    const checkOut = addDays(checkIn, 1);
-    const days = 1;
+    const location = "Москва"
+    const checkIn = new Date()
+    const checkOut = addDays(checkIn, 1)
+    const days = 1
 
     dispatch(
       fetchHotelsRoutine({
@@ -35,8 +36,8 @@ export function HotelList() {
         checkOut: checkOut,
         days: days,
       })
-    );
-  }, []);
+    )
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -67,5 +68,5 @@ export function HotelList() {
         ))}
       </div>
     </div>
-  );
+  )
 }
