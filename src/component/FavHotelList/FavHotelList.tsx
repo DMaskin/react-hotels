@@ -1,26 +1,26 @@
-import React, { useState } from "react";
-import styles from "./FavHotelList.module.scss";
-import { Hotel } from "../Hotel/Hotel";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import disabledArrows from "../../asset/favHotels/disabledArrows.svg";
-import ascend from "../../asset/favHotels/ascend.svg";
-import descend from "../../asset/favHotels/descend.svg";
-import {selectFavHotels, sortFavHotelsByProperty} from "../../features/hotel/hotelSlice";
+import React, { useState } from "react"
+import styles from "./FavHotelList.module.scss"
+import { Hotel } from "../Hotel/Hotel"
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import disabledArrows from "../../asset/favHotels/disabledArrows.svg"
+import ascend from "../../asset/favHotels/ascend.svg"
+import descend from "../../asset/favHotels/descend.svg"
+import { selectFavHotels, sortFavHotelsByProperty } from "../../features/hotel/hotelSlice"
 
 export function FavHotelList() {
   const favHotels = useAppSelector(selectFavHotels)
-  const [isAscend, setIsAscend] = useState(true);
-  const [rateChecked, setRateChecked] = useState(true);
-  const dispatch = useAppDispatch();
-  const RATE = "stars";
-  const PRICE = "priceAvg";
+  const [isAscend, setIsAscend] = useState(true)
+  const [rateChecked, setRateChecked] = useState(true)
+  const dispatch = useAppDispatch()
+  const RATE = "stars"
+  const PRICE = "priceAvg"
 
   function rateChangeHandler() {
-    setRateChecked(true);
+    setRateChecked(true)
   }
 
   function priceChangeHandler() {
-    setRateChecked(false);
+    setRateChecked(false)
   }
 
   function clickHandler() {
@@ -29,8 +29,8 @@ export function FavHotelList() {
         property: rateChecked ? RATE : PRICE,
         isAscend,
       })
-    );
-    setIsAscend(!isAscend);
+    )
+    setIsAscend(!isAscend)
   }
 
   return (
@@ -91,5 +91,5 @@ export function FavHotelList() {
         ))}
       </div>
     </div>
-  );
+  )
 }

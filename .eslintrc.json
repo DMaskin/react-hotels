@@ -1,0 +1,55 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "prettier"
+  ],
+  "overrides": [
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": [
+      "tsconfig.json"
+    ]
+  },
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "no-console": "warn",
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "jsx-quotes": [
+      "warn",
+      "prefer-double"
+    ],
+    "@typescript-eslint/quotes": [
+      "warn",
+      "double"
+    ],
+    "@typescript-eslint/consistent-type-assertions": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "object-shorthand": "off",
+    "@typescript-eslint/restrict-template-expressions": "off",
+    "@typescript-eslint/consistent-type-imports": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    "@typescript-eslint/no-misused-promises": "off"
+  }
+}

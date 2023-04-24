@@ -4,7 +4,7 @@
   gap: 32px;
   width: 360px;
   height: 472px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 4px 33px rgba(0, 0, 0, 0.04);
   border-radius: 16px;
 
@@ -20,7 +20,6 @@
       font-size: 24px;
     }
   }
-
 
   .buttonBlock {
     display: flex;
@@ -39,8 +38,8 @@
       width: 89px;
       height: 28px;
       outline: none;
-      background: #FFFFFF;
-      border: 1px solid #41522E;
+      background: #ffffff;
+      border: 1px solid #41522e;
       border-radius: 4px;
     }
 
@@ -50,8 +49,8 @@
       justify-content: space-around;
     }
 
-    .radio input[type=radio] {
-      display: none
+    .radio input[type="radio"] {
+      display: none;
     }
 
     .radio label {
@@ -61,20 +60,20 @@
       cursor: pointer;
       width: 89px;
       height: 28px;
-      background: #FFFFFF;
+      background: #ffffff;
       border-radius: 4px;
       font-weight: 400;
       font-size: 14px;
       user-select: none;
 
-      color: #99A0A3;
-      border: 1px solid #E5E5E5;
+      color: #99a0a3;
+      border: 1px solid #e5e5e5;
     }
 
     /* Checked */
-    .radio input[type=radio]:checked + label {
-      border: 1px solid #41522E;
-      color: #41522E;
+    .radio input[type="radio"]:checked + label {
+      border: 1px solid #41522e;
+      color: #41522e;
     }
 
     /* Hover */

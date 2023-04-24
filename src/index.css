@@ -1,11 +1,11 @@
 body {
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 :root {
-  --scrollbarBgColor: #E7E7E7;
-  --scrollbarThumbColor: #41522E;
+  --scrollbarBgColor: #e7e7e7;
+  --scrollbarThumbColor: #41522e;
   --scrollbarWidth: 2px;
   --scrollbarBorder: 0 solid var(--scrollbarBgColor);
   --scrollbarBorderRadius: calc(var(--scrollbarWidth) / 4);
@@ -30,4 +30,3 @@ body {
   border-radius: var(--scrollbarBorderRadius);
   border: var(--scrollbarBorder);
 }
-
