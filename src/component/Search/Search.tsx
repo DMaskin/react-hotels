@@ -1,11 +1,18 @@
 import React, { FormEvent, ForwardedRef, forwardRef, useState } from "react"
-import DatePicker from "react-datepicker"
+import DatePicker, { registerLocale } from "react-datepicker"
+import ru from "date-fns/locale/ru" // the locale you want
 import { useAppDispatch } from "../../app/hooks"
 import { fetchHotelsRoutine } from "../../features/hotel/hotelSlice"
 import { addDays } from "../../util/util"
 import calendarIcon from "../../asset/search/calendar.svg"
 import styles from "./Search.module.scss"
 import "react-datepicker/dist/react-datepicker.css"
+
+registerLocale("ru", ru)
+
+// interface FormFields {
+//
+// }
 
 export function Search() {
   const [date, setDate] = useState(new Date())
@@ -64,7 +71,10 @@ export function Search() {
           <label htmlFor="datepicker">Дата заселения</label>
           <DatePicker
             id="datepicker"
+            locale="ru"
             selected={date}
+            minDate={new Date()}
+            maxDate={addDays(new Date(), 90)}
             onChange={(date: Date) => setDate(date)}
             customInput={React.createElement(CustomInput)}
           />
