@@ -10,18 +10,21 @@ import "react-datepicker/dist/react-datepicker.css"
 
 registerLocale("ru", ru)
 
-// interface FormFields {
-//
-// }
-
 export function Search() {
   const [date, setDate] = useState(new Date())
   const [loc, setLoc] = useState("Москва")
   const [days, setDays] = useState(1)
+  const [error, setError] = useState("")
   const dispatch = useAppDispatch()
 
   const onSubmit = async (e: FormEvent) => {
     e.preventDefault()
+    setError("")
+    if (days <= 0 || days > 100) {
+      setError("Установите корректное количестово дней")
+      return
+    }
+
     const newDate = addDays(date, days)
     dispatch(
       fetchHotelsRoutine({
@@ -65,7 +68,7 @@ export function Search() {
       <form onSubmit={onSubmit} id="external-form">
         <div className={styles.textField}>
           <label htmlFor="location">Локация</label>
-          <input type="text" value={loc} onChange={(e) => setLoc(e.target.value)} />
+          <input type="text" value={loc} onChange={(e) => setLoc(e.target.value)} required />
         </div>
         <div className={styles.textField}>
           <label htmlFor="datepicker">Дата заселения</label>
@@ -81,7 +84,11 @@ export function Search() {
         </div>
         <div className={styles.textField}>
           <label htmlFor="days">Количество дней</label>
-          <input id="days" type="number" value={days} onChange={(e) => setDays(Number(e.target.value))} />
+          <input id="days"
+                 type="number"
+                 value={days}
+                 onChange={(e) => setDays(Number(e.target.value))} />
+          {error && <span role="alert">{error}</span>}
         </div>
         <button type="submit" className={styles.searchButton}>
           Найти
